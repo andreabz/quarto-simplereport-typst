@@ -1,0 +1,10 @@
+title: Quarto Simple Report Typst
+author: Andrea Bazzano
+version: 0.1.0
+quarto-required: ">=1.6.37"
+contributes:
+  formats:
+    typst:
+      template-partials:
+        - typst-template.typ
+        - typst-show.typ

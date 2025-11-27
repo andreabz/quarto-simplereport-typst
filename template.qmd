@@ -1,0 +1,105 @@
+---
+title: Esempio di Report con Quarto + Typst
+subtitle: Un report davvero essenziale
+date: today
+lang: it
+abstract: |
+    {{< lipsum 1 >}}
+execute:
+  echo: false
+  warning: false
+  message: false
+format: 
+  simplereport-typst:
+    css-property-processing: none
+    font-paths: static/fonts/
+---
+
+```{r}
+library(ggplot2)
+library(gt)
+```
+
+# Introduzione
+
+Questo è un documento di esempio creato per mostrare l'utilizzo del **template Typst per Quarto**. Il file contiene:
+
+- testo formattato
+- un grafico generato con `ggplot2`
+- una tabella costruita con `gt`
+- nessun dataset esterno (solo dataset forniti da R base)
+
+L'obiettivo è verificare che il template funzioni correttamente con:
+
+- *codice R*
+- *figure*
+- *tabelle*
+- *rendering Typst*
+
+Non poteva mancare un po' di lorem ipsum {{< lipsum 1 >}}.
+
+# Analisi esplorativa dei dati
+
+In questa sezione lavoriamo con il dataset `mtcars`, fornito di default in R.
+
+{{< lipsum 1 >}}
+
+```{r}
+#| label: tbl-prova
+#| tbl-cap: Una tabella di prova.
+#| 
+car <- rownames(mtcars)
+data <- cbind(car, mtcars)
+data[, 1:10] |>
+head(10) |>
+gt()
+```
+
+Altro lorem ipsum {{< lipsum 3 >}}.
+
+## Sottocapitolo
+
+```{r}
+#| label: fig-prova
+#| fig-cap: Una figura di prova
+#| echo: true
+
+library(ggplot2)
+
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+    geom_point(color = "steelblue", size = 3) +
+    geom_smooth(method = "lm", se = FALSE, color = "firebrick") +
+    labs(
+        title = "Relazione tra peso (wt) e consumo (mpg)",
+        x = "Peso (migliaia di libbre)",
+        y = "Consumo (mpg)"
+    ) +
+    theme_minimal()
+```
+
+Ancora lorem ipsum {{< lipsum 2 >}}.
+
+C'è anche un'equazione:
+
+$$
+\hat{y} = \beta_0 + \beta_1 x 
+$$ {#eq-linear}
+
+dove:
+
+- $\hat{y}$ è il valore predetto,
+- $\beta_0$ è l'intercetta,
+- $\beta_1$ è il coefficiente associato al predittore $x$.
+
+Altro lorem ipsum {{< lipsum 2 >}}.
+
+# Conclusioni
+
+Abbiamo mostrato come:
+
+- integrare codice `R`
+- generare grafici con `ggplot2`
+- creare tabelle eleganti con `gt`
+- utilizzare il tuo template Typst tramite Quarto
+
+Se il documento si renderizza correttamente, allora la tua estensione Typst è installata e funzionante.

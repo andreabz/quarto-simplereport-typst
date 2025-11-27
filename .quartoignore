@@ -1,0 +1,9 @@
+_quarto.yml
+docs/
+*.Rproj
+static/
+snapshot.R
+img/template-full.png
+renv.lock
+renv/
+README.qmd
